@@ -1,0 +1,481 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+		<link rel="stylesheet" href="css/modal.css">
+		<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+		<script src="js/modal.js"></script>
+		<!--[if lte IE 8]>
+		<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
+		<![endif]-->
+		<title>Los 30 de Sabella</title>
+		<style>
+			html, body {
+				width: 100%;
+				height: 100%;
+				padding: 0;
+				margin: 0;
+			}
+			#map {
+				width: 100%;
+				height: 100%;
+				background: black;
+			}
+			#menu {
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				width: 400px;
+				height: 60px;
+				background: transparent;
+				z-index: 10;
+			}
+			#menu a {
+				margin: 15px 10px 0 0;
+				float: right;
+				vertical-align: baseline;
+				width: 70px;
+				padding: 10px;
+				text-align: center;
+				font: bold 11px "Helvetica", Arial;
+				line-height: normal;
+				color: #555;
+				border-radius: 4px;
+				border: 1px solid #777777;
+				background: #ffffff;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			#menu a.selected, #menu a:hover {
+				color: #F84F40;
+			}
+			
+			 #button {
+        position: absolute;
+        bottom: 40px;
+        right: 20px;
+        padding: 0;
+      }
+
+			 #layer_selector {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        padding: 0;
+      }
+
+      #layer_selector ul {
+        padding: 0; margin: 0;
+        list-style-type: none;
+      }
+
+      #layer_selector li {
+        border-bottom: 1px solid #999;
+        padding: 3px 10px;
+        font-family: "Helvetica", Arial;
+        font-size: 10px;
+        color: #444;
+        cursor: auto;
+      }
+
+      #layer_selector li:hover {
+        background-color: #F0F0F0;
+        cursor: pointer;
+      }
+
+      #layer_selector li.selected {
+        background-color: #EEE;
+      }
+				
+				#layer_selector2 {
+			        position: absolute;
+			        top: 10px;
+			        left: 40px;
+			        padding: 0;
+			      }
+
+			      #layer_selector2 ul {
+			        padding: 0; margin: 0;
+			        list-style-type: none;
+			      }
+
+			      #layer_selector2 li {
+			        border-bottom: 1px solid #999;
+			        padding: 3px 10px;
+			        font-family: "Helvetica", Arial;
+			        font-size: 10px;
+			        color: #444;
+			        cursor: auto;
+			      }
+
+			      #layer_selector2 li:hover {
+			        background-color: #F0F0F0;
+			        cursor: pointer;
+			      }
+
+			      #layer_selector2 li.selected {
+			        background-color: #EEE;
+			      }	
+				
+				.btn {
+				  background: #3498db;
+				  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+				  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+				  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+				  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+				  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+				  -webkit-border-radius: 28;
+				  -moz-border-radius: 28;
+				  border-radius: 28px;
+				  font-family: Arial;
+				  color: #ffffff;
+				  font-size: 20px;
+				  padding: 10px 20px 10px 20px;
+				  text-decoration: none;
+				}
+
+				.btn:hover {
+				  background: #3cb0fd;
+				  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+				  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+				  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+				  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+				  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+				  text-decoration: none;
+				}
+
+
+
+				div.sabellainfobox {
+				  padding: 0px;
+				  position:fixed;
+					top:20px;
+					left:40px;
+				  display: inline-block;
+				  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 4px 2px;
+				  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 4px 2px;
+				  box-shadow: rgba(0, 0, 0, 0.2) 0 0 4px 2px;
+				  z-index: 5;
+				  background: white;
+				  -webkit-border-radius: 4px;
+				  -moz-border-radius: 4px;
+				  -ms-border-radius: 4px;
+				  -o-border-radius: 4px;
+				  border-radius: 4px;
+				  border: 1px solid #999999;
+				  text-align:left;
+				  z-index:5;
+				}
+
+				div.sabellainfobox2 {
+				  padding: 0px;
+				  position:fixed;
+					bottom:20px;
+					right:40px;
+				  display: inline-block;
+				  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 4px 2px;
+				  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 4px 2px;
+				  box-shadow: rgba(0, 0, 0, 0.2) 0 0 4px 2px;
+				  z-index: 5;
+				  background: white;
+				  -webkit-border-radius: 4px;
+				  -moz-border-radius: 4px;
+				  -ms-border-radius: 4px;
+				  -o-border-radius: 4px;
+				  border-radius: 4px;
+				  border: 1px solid #999999;
+				  text-align:left;
+				  z-index:5;
+				}
+
+		</style>
+
+		<script>
+			var map;
+			function init() {
+				// initiate leaflet map
+				map = new L.Map('map', {
+					center : [18.260653, -32.519531],
+					zoom : 3
+				});
+
+				 L.tileLayer('https://a.tiles.mapbox.com/v3/gcbadata.map-0ub2e509/{z}/{x}/{y}.png', {
+				    attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>"
+				  }).addTo(map);
+				// inicio pegar codigo aca
+
+				//el jsont tuyo
+				// var layerUrl = 'http://documentation.cartodb.com/api/v2/viz/9af23dd8-ea10-11e2-b5ac-5404a6a683d5/viz.json';
+
+				var layerUrl = 'http://thevizmachine.cartodb.com/api/v2/viz/ab8ad816-ddc7-11e3-8804-0e10bcd91c2b/viz.json';
+
+				var sublayers = [];
+
+				cartodb.createLayer(map, layerUrl).addTo(map).on('done', function(layer) {
+					// change the query for the first layer
+					var subLayerOptions = {
+
+						//sql: "SELECT (COLUMNA) FROM (TABLA)",
+						sql : "SELECT * FROM lista_20sabella_20completita", 
+					
+					}
+
+					var sublayer = layer.getSubLayer(0);
+
+					sublayer.set(subLayerOptions);
+
+					sublayers.push(sublayer);
+				}).on('error', function() {
+					//log the error
+				});
+
+				// acciones de los botones.
+				var LayerActions = {
+
+					todos : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita ");
+						return true;
+					},
+
+					ano1998 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '1998'");
+						return true;
+					},
+
+					ano1999 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '1999'");
+						return true;
+					},
+
+					ano2000 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2000'");
+						return true;
+					},
+
+
+					ano2001 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2001'");
+						return true;
+					},
+
+					ano2002 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2002'");
+						return true;
+					},
+
+					ano2003 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2003'");
+						return true;
+					},
+
+					ano2004 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2004'");
+						return true;
+					},
+
+					ano2005 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2005'");
+						return true;
+					},
+
+					ano2006 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2006'");
+						return true;
+					},
+
+					ano2007 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2007'");
+						return true;
+					},
+
+					ano2008 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2008'");
+						return true;
+					},
+
+					ano2009 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2009'");
+						return true;
+					},
+
+					ano2010 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2010'");
+						return true;
+					},
+
+					ano2011 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2011'");
+						return true;
+					},
+
+					ano2012 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2012'");
+						return true;
+					},
+
+					ano2013 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2013'");
+						return true;
+					},
+
+					ano2014 : function() {
+						sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE ano = '2014'");
+						return true;
+					},
+
+//<!-- 	MARTO COMPLETA ACA LOS BOTONES -->
+					campa : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Hugo Campagnaro'"); return true; },
+					maxi : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Maximiliano Rodríguez'"); return true; },
+					demichelis : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Martín Demichelis'"); return true; },
+					orion : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Agustín Orión'"); return true; },
+					basanta : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'José María Basanta'"); return true; },
+					sosa : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'José Sosa'"); return true; },
+					zabaleta : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Pablo Zabaleta'"); return true; },
+					palacio : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Rodrigo Palacio'"); return true; },
+					enzo : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Enzo Pérez'"); return true; },
+					lavezzi : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Ezequiel Lavezzi'"); return true; },
+					masche : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Javier Mascherano'"); return true; },
+					andujar : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Mariano Andujar'"); return true; },
+					kun : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Sergio Agüero'"); return true; },
+					romero : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Sergio Romero'"); return true; },
+					garay : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Ezequiel Garay'"); return true; },
+					gago : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Fernando Gago'"); return true; },
+					messi : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Lionel Messi'"); return true; },
+					biglia : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Lucas Biglia'"); return true; },
+					pipa : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Gonzalo Higuaín'"); return true; },
+					dimaria : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Angel Di Maria'"); return true; },
+					augusto : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Augusto Fernández'"); return true; },
+					disanto : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Franco Di Santo'"); return true; },
+					mercado : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Gabriel Mercado'"); return true; },
+					banega : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Ever Banega'"); return true; },
+					rinaudo : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Fabián Rinaudo'"); return true; },
+					fernandez : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Federico Fernández'"); return true; },
+					lopez : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Lisandro López'"); return true; },
+					otamendi : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Nicolás Otamendi'"); return true; },
+					ricky : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Ricardo Álvarez'"); return true; },
+					rojo : function() { sublayers[0].setSQL("SELECT * FROM lista_20sabella_20completita WHERE jugador = 'Marcos Rojo'"); return true; }
+
+
+
+				}
+
+				$('li').on('click', function (e) {
+				    var optionSelected = $(this);
+				    
+				    //alert(optionSelected.attr('id'))
+
+				    $(".selected").removeClass();
+				    $(this).addClass("selected");
+
+				    LayerActions[optionSelected[0].id]();
+
+				});
+
+
+
+				// // Escucha el boton, desactivo todo y activa el clicjeado segun su ID
+				// $('.button').click(function() {
+				// 	$('.button').removeClass('selected');
+				// 	$(this).addClass('selected');
+				// 	LayerActions[$(this).attr('id')]();
+				// });
+
+				// fin pegar codigo aca
+
+				
+
+				 var mapboxUrl = 'https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-eeoepub0/{z}/{x}/{y}.png',
+            mapbox = new L.TileLayer(mapboxUrl, {minZoom: 6, maxZoom: 19,prefix:false});
+            map.addLayer(mapbox,true);
+
+			}
+		</script>
+	</head>
+
+	<body onload="init()">
+
+			<div id="layer_selector2" class="sabellainfobox">
+
+      <ul>
+<!-- 	MARTO COMPLETA ACA LOS BOTONES -->
+
+			 	<li id="todos" class="selected" value="todos">Todos</li>
+				<li id="campa" value="campa">Hugo Campagnaro</li>
+				<li id="maxi" value="maxi">Maximiliano Rodríguez</li>
+				<li id="demichelis" value="demichelis">Martín Demichelis</li>
+				<li id="orion" value="orion">Agustín Orión</li>
+				<li id="basanta" value="basanta">José María Basanta</li>
+				<li id="sosa" value="sosa">José Sosa</li>
+				<li id="zabaleta" value="zabaleta">Pablo Zabaleta</li>
+				<li id="palacio" value="palacio">Rodrigo Palacio</li>
+				<li id="enzo" value="enzo">Enzo Pérez</li>
+				<li id="lavezzi" value="lavezzi">Ezequiel Lavezzi</li>
+				<li id="masche" value="masche">Javier Mascherano</li>
+				<li id="andujar" value="andujar">Mariano Andujar</li>
+				<li id="kun" value="kun">Sergio Agüero</li>
+				<li id="romero" value="romero">Sergio Romero</li>
+				<li id="garay" value="garay">Ezequiel Garay</li>
+				<li id="gago" value="gago">Fernando Gago</li>
+				<li id="messi" value="messi">Lionel Messi</li>
+				<li id="biglia" value="biglia">Lucas Biglia</li>
+				<li id="pipa" value="pipa">Gonzalo Higuaín</li>
+				<li id="dimaria" value="dimaria">Angel Di Maria</li>
+				<li id="augusto" value="augusto">Augusto Fernández</li>
+				<li id="disanto" value="disanto">Franco Di Santo</li>
+				<li id="mercado" value="mercado">Gabriel Mercado</li>
+				<li id="banega" value="banega">Ever Banega</li>
+				<li id="rinaudo" value="rinaudo">Fabián Rinaudo</li>
+				<li id="fernandez" value="fernandez">Federico Fernández</li>
+				<li id="lopez" value="lopez">Lisandro López</li>
+				<li id="otamendi" value="otamendi">Nicolás Otamendi</li>
+				<li id="ricky" value="ricky">Ricardo Álvarez</li>
+				<li id="rojo" value="rojo">Marcos Rojo</li>
+        
+      </ul>
+    </div>
+		
+    <div id="layer_selector" class="cartodb-infobox">
+
+      <ul>
+						
+			 	<li id="todos" class="selected" value="todos">Todos</li>
+				<li id="ano1998" value="ano1998">1998</li>
+				<li id="ano1999" value="ano1999">1999</li>
+				<li id="ano2000" value="ano2000">2000</li>
+				<li id="ano2001" value="ano2001">2001</li>
+				<li id="ano2002" value="ano2002">2002</li>
+				<li id="ano2003" value="ano2003">2003</li>
+				<li id="ano2004" value="ano2004">2004</li>
+				<li id="ano2005" value="ano2005">2005</li>
+				<li id="ano2006" value="ano2006">2006</li>
+				<li id="ano2007" value="ano2007">2007</li>
+				<li id="ano2008" value="ano2008">2008</li>
+				<li id="ano2009" value="ano2009">2009</li>
+				<li id="ano2010" value="ano2010">2010</li>
+				<li id="ano2011" value="ano2011">2011</li>
+				<li id="ano2012" value="ano2012">2012</li>
+				<li id="ano2013" value="ano2013">2013</li>
+				<li id="ano2014" value="ano2014">2014</li>    
+      </ul>
+    </div>
+
+		<div id='map'></div>
+
+		<div id="button">
+		
+		<a class = 'btn' href="#modal-text" class="call-modal" title="?">?</a>
+		<section class="semantic-content" id="modal-text" tabindex="-1"
+		        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+
+		    <div class="modal-inner">
+		        <header id="modal-label">Los 30 de Sabella</header>
+		        <div class="modal-content">Una visualización que muestra el recorrido de los elegidos para disputar el Mundial 2014 desde sus inicios hasta la actualidad. Año a año, club a club.</div>
+		        <footer>Un desarrollo mágico de The Viz Machine</footer>
+		    </div>
+
+		    <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+		        data-dismiss="modal">×</a>
+		</section>
+		</div>
+
+	</body>
+</html>

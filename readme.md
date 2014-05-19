@@ -4,5 +4,5 @@ Una visualización de las carreras futbolísticas de los 23 elegidos por el sele
 Realizado por [The Viz Machine](http://twitter.com/thevizmachine)
 
 Utiliza
-*[CartoDB](http://cartodb.com)
-*[Css Modal](http://drublic.github.io/css-modal/)
+* [CartoDB](http://cartodb.com)
+* [Css Modal](http://drublic.github.io/css-modal/)

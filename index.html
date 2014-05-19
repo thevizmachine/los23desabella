@@ -206,7 +206,7 @@
 				//el jsont tuyo
 				// var layerUrl = 'http://documentation.cartodb.com/api/v2/viz/9af23dd8-ea10-11e2-b5ac-5404a6a683d5/viz.json';
 
-				var layerUrl = 'http://thevizmachine.cartodb.com/api/v2/viz/9daa6d06-df70-11e3-91e1-0e73339ffa50/viz.json';
+				var layerUrl = 'http://thevizmachine.cartodb.com/api/v2/viz/6395a50e-df84-11e3-96d5-0e10bcd91c2b/viz.json';
 
 				var sublayers = [];
 
@@ -215,7 +215,7 @@
 					var subLayerOptions = {
 
 						//sql: "SELECT (COLUMNA) FROM (TABLA)",
-						sql : "SELECT * FROM table_erge_e_abella", 
+						sql : "SELECT * FROM table_elecci_n_rgentina", 
 					
 					}
 
@@ -232,127 +232,127 @@
 				var LayerActions = {
 
 					todos : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella ");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina ");
 						return true;
 					},
 
 					ano1998 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '1998'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '1998'");
 						return true;
 					},
 
 					ano1999 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '1999'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '1999'");
 						return true;
 					},
 
 					ano2000 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2000'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2000'");
 						return true;
 					},
 
 
 					ano2001 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2001'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2001'");
 						return true;
 					},
 
 					ano2002 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2002'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2002'");
 						return true;
 					},
 
 					ano2003 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2003'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2003'");
 						return true;
 					},
 
 					ano2004 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2004'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2004'");
 						return true;
 					},
 
 					ano2005 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2005'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2005'");
 						return true;
 					},
 
 					ano2006 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2006'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2006'");
 						return true;
 					},
 
 					ano2007 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2007'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2007'");
 						return true;
 					},
 
 					ano2008 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2008'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2008'");
 						return true;
 					},
 
 					ano2009 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2009'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2009'");
 						return true;
 					},
 
 					ano2010 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2010'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2010'");
 						return true;
 					},
 
 					ano2011 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2011'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2011'");
 						return true;
 					},
 
 					ano2012 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2012'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2012'");
 						return true;
 					},
 
 					ano2013 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2013'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2013'");
 						return true;
 					},
 
 					ano2014 : function() {
-						sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE ano = '2014'");
+						sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE ano = '2014'");
 						return true;
 					},
 
 //<!-- 	MARTO COMPLETA ACA LOS BOTONES -->
-					campa : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Hugo Campagnaro'"); return true; },
-					maxi : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Maximiliano Rodríguez'"); return true; },
-					demichelis : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Martín Demichelis'"); return true; },
-					orion : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Agustín Orión'"); return true; },
-					basanta : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'José María Basanta'"); return true; },
-					sosa : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'José Sosa'"); return true; },
-					zabaleta : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Pablo Zabaleta'"); return true; },
-					palacio : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Rodrigo Palacio'"); return true; },
-					enzo : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Enzo Pérez'"); return true; },
-					lavezzi : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Ezequiel Lavezzi'"); return true; },
-					masche : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Javier Mascherano'"); return true; },
-					andujar : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Mariano Andujar'"); return true; },
-					kun : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Sergio Agüero'"); return true; },
-					romero : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Sergio Romero'"); return true; },
-					garay : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Ezequiel Garay'"); return true; },
-					gago : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Fernando Gago'"); return true; },
-					messi : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Lionel Messi'"); return true; },
-					biglia : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Lucas Biglia'"); return true; },
-					pipa : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Gonzalo Higuaín'"); return true; },
-					dimaria : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Angel Di Maria'"); return true; },
-					augusto : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Augusto Fernández'"); return true; },
-					disanto : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Franco Di Santo'"); return true; },
-					mercado : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Gabriel Mercado'"); return true; },
-					banega : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Ever Banega'"); return true; },
-					rinaudo : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Fabián Rinaudo'"); return true; },
-					fernandez : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Federico Fernández'"); return true; },
-					lopez : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Lisandro López'"); return true; },
-					otamendi : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Nicolás Otamendi'"); return true; },
-					ricky : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Ricardo Álvarez'"); return true; },
-					rojo : function() { sublayers[0].setSQL("SELECT * FROM table_erge_e_abella WHERE jugador = 'Marcos Rojo'"); return true; }
+					campa : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Hugo Campagnaro'"); return true; },
+					maxi : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Maximiliano Rodríguez'"); return true; },
+					demichelis : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Martín Demichelis'"); return true; },
+					orion : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Agustín Orión'"); return true; },
+					basanta : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'José María Basanta'"); return true; },
+					sosa : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'José Sosa'"); return true; },
+					zabaleta : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Pablo Zabaleta'"); return true; },
+					palacio : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Rodrigo Palacio'"); return true; },
+					enzo : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Enzo Pérez'"); return true; },
+					lavezzi : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Ezequiel Lavezzi'"); return true; },
+					masche : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Javier Mascherano'"); return true; },
+					andujar : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Mariano Andujar'"); return true; },
+					kun : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Sergio Agüero'"); return true; },
+					romero : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Sergio Romero'"); return true; },
+					garay : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Ezequiel Garay'"); return true; },
+					gago : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Fernando Gago'"); return true; },
+					messi : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Lionel Messi'"); return true; },
+					biglia : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Lucas Biglia'"); return true; },
+					pipa : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Gonzalo Higuaín'"); return true; },
+					dimaria : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Angel Di Maria'"); return true; },
+					augusto : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Augusto Fernández'"); return true; },
+					disanto : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Franco Di Santo'"); return true; },
+					mercado : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Gabriel Mercado'"); return true; },
+					banega : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Ever Banega'"); return true; },
+					rinaudo : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Fabián Rinaudo'"); return true; },
+					fernandez : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Federico Fernández'"); return true; },
+					lopez : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Lisandro López'"); return true; },
+					otamendi : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Nicolás Otamendi'"); return true; },
+					ricky : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Ricardo Álvarez'"); return true; },
+					rojo : function() { sublayers[0].setSQL("SELECT * FROM table_elecci_n_rgentina WHERE jugador = 'Marcos Rojo'"); return true; }
 
 
 

@@ -6,3 +6,5 @@ Realizado por [The Viz Machine](http://twitter.com/thevizmachine) - [@tomicrom](
 Utiliza
 * [CartoDB](http://cartodb.com)
 * [Css Modal](http://drublic.github.io/css-modal/)
+
+Imágenes: [canchallena](http://canchallena.lanacion.com.ar/)
